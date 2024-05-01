@@ -1,0 +1,29 @@
+# Save the output of this file and use kubectl create -f to import
+# it into Kubernetes.
+#
+# Created with podman-5.1.0-dev-3a20c7275
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: "2024-04-22T16:20:11Z"
+  labels:
+    app: test
+  name: test
+spec:
+  selector:
+    app: test
+  type: NodePort
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    io.kubernetes.cri-o.SandboxID/confidentyonath: 109d1eca43e529d3bf31e65e969ef020de925c87e7211a87952915dc5498b5db
+  creationTimestamp: "2024-04-22T16:20:11Z"
+  labels:
+    app: test
+  name: test
+spec:
+  containers:
+  - image: docker.io/danielmc03/image-built-with-jib:latest
+    name: confidentyonath
