@@ -10,9 +10,16 @@ import java.util.Objects;
 public class HelloWorld {
 
     public static void main(String[] args) throws IOException {
-        try (Reader reader = new InputStreamReader(Objects.requireNonNull(HelloWorld.class.getResourceAsStream("/world")), StandardCharsets.UTF_8)) {
-            String world = CharStreams.toString(reader);
-            System.out.println("Hello " + world);
+        int i = 0;
+        while(i < 1000) {
+            try (Reader reader = new InputStreamReader(Objects.requireNonNull(HelloWorld.class.getResourceAsStream("/world")), StandardCharsets.UTF_8)) {
+                String world = CharStreams.toString(reader);
+                System.out.println("Hello " + world);
+                Thread.sleep(500);
+            }catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            i++;
         }
     }
 }
